@@ -9,29 +9,31 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background: radial-gradient(circle, #1e2749, #162038);
-            color: #ffffff;
+            background: linear-gradient(to right, #ffecd2, #fcb69f); /* Hellerer Hintergrund */
+            color: #333333;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
+            padding: 20px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #f4d03f;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            font-size: 3rem;
+            color: #d35400; /* Warmes Orange für die Überschrift */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
             margin-bottom: 20px;
         }
 
         .calendar {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 15px;
+            gap: 10px;
             max-width: 900px;
-            width: 90%;
+            width: 100%;
+            margin-bottom: 30px;
         }
 
         .door {
@@ -41,6 +43,7 @@
             border-radius: 12px;
             cursor: pointer;
             transition: transform 0.3s;
+            opacity: 0.9;
         }
 
         .door-inner {
@@ -70,8 +73,8 @@
         }
 
         .door-front {
-            background: linear-gradient(145deg, #ff5733, #c70039);
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(145deg, #ff5733, #f39c12); /* Helles Orange */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             font-size: 2rem;
             font-weight: bold;
             color: white;
@@ -91,187 +94,190 @@
             transform: scale(1.05);
         }
 
+        .events {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .event {
+            background: linear-gradient(145deg, #2980b9, #3498db);
+            border-radius: 8px;
+            padding: 15px;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
         footer {
             margin-top: 20px;
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         footer a {
-            color: #f4d03f;
+            color: #d35400; /* Passend zur Überschrift */
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            .calendar {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .events {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calendar {
+                grid-template-columns: 1fr;
+            }
+
+            .door {
+                height: 120px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Floh's Adventskalender</h1>
+
     <div class="calendar">
-        <!-- Türchen -->
-        <div class="door" onclick="openDoor(this, 1)">
+        <!-- Adventskalender mit allen 24 Türchen -->
+        <div class="door" id="door-1" onclick="openDoor(this, 1)">
             <div class="door-inner">
                 <div class="door-front">1</div>
                 <div class="door-back">„Ein Lächeln ist das schönste Geschenk, das du heute geben kannst.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 2)">
+        <div class="door" id="door-2" onclick="openDoor(this, 2)">
             <div class="door-inner">
                 <div class="door-front">2</div>
                 <div class="door-back">„Die Magie von Weihnachten liegt in den kleinen Momenten.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 3)">
+        <div class="door" id="door-3" onclick="openDoor(this, 3)">
             <div class="door-inner">
                 <div class="door-front">3</div>
-                <div class="door-back">„Kerzenlicht und Tannenduft – die Seele atmet auf.“</div>
+                <div class="door-back">„Erinnere dich: Die besten Geschenke kommen von Herzen.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 4)">
+        <div class="door" id="door-4" onclick="openDoor(this, 4)">
             <div class="door-inner">
                 <div class="door-front">4</div>
-                <div class="door-back">„Heute ist ein Tag, um jemanden an dein Herz zu lassen.“</div>
+                <div class="door-back">„Frohe Weihnachten! Möge dein Herz genauso hell leuchten wie der Weihnachtsbaum.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 5)">
+        <div class="door" id="door-5" onclick="openDoor(this, 5)">
             <div class="door-inner">
                 <div class="door-front">5</div>
-                <div class="door-back">„Jeder Schneeflocke wohnt ein Zauber inne.“</div>
+                <div class="door-back">„Lasst uns die Feiertage mit Freude und Liebe füllen!“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 6)">
+        <div class="door" id="door-6" onclick="openDoor(this, 6)">
             <div class="door-inner">
                 <div class="door-front">6</div>
-                <div class="door-back">„Wärme und Liebe sind das Herzstück der Weihnachtszeit.“</div>
+                <div class="door-back">„Ein frohes und gesundes neues Jahr für dich und deine Familie!“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 7)">
+        <div class="door" id="door-7" onclick="openDoor(this, 7)">
             <div class="door-inner">
                 <div class="door-front">7</div>
-                <div class="door-back">„100 Robux - Beeil dich und schreib mich auf Discord an, auf 1. Limitiert!“</div>
+                <div class="door-back">„Genieße jeden Moment der Festtage mit den Menschen, die du liebst.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 8)">
+        <div class="door" id="door-8" onclick="openDoor(this, 8)">
             <div class="door-inner">
                 <div class="door-front">8</div>
-                <div class="door-back">„In der Stille liegt die wahre Freude verborgen.“</div>
+                <div class="door-back">„Die besten Geschenke kommen oft ohne Verpackung.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 9)">
+        <div class="door" id="door-9" onclick="openDoor(this, 9)">
             <div class="door-inner">
                 <div class="door-front">9</div>
-                <div class="door-back">„Ein heißer Kakao und ein guter Gedanke wärmen das Herz.“</div>
+                <div class="door-back">„Möge deine Weihnachtszeit genauso strahlend sein wie die Lichter am Baum.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 10)">
+        <div class="door" id="door-10" onclick="openDoor(this, 10)">
             <div class="door-inner">
                 <div class="door-front">10</div>
-                <div class="door-back">„Weihnachten erinnert uns daran, was wirklich zählt.“</div>
+                <div class="door-back">„Der wahre Wert der Feiertage ist die Zeit, die wir miteinander verbringen.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 11)">
+        <div class="door" id="door-11" onclick="openDoor(this, 11)">
             <div class="door-inner">
                 <div class="door-front">11</div>
-                <div class="door-back">„Jeder Tag bis Weihnachten ist ein Schritt näher zur Freude.“</div>
+                <div class="door-back">„Möge dein Herz genauso warm sein wie der Glühwein an einem kalten Winterabend.“</div>
             </div>
         </div>
-        <div class="door" onclick="openDoor(this, 12)">
+        <div class="door" id="door-12" onclick="openDoor(this, 12)">
             <div class="door-inner">
                 <div class="door-front">12</div>
-                <div class="door-back">„Mit Liebe im Herzen wird alles heller.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 13)">
-            <div class="door-inner">
-                <div class="door-front">13</div>
-                <div class="door-back">„Ein friedliches Zuhause ist das schönste Geschenk.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 14)">
-            <div class="door-inner">
-                <div class="door-front">14</div>
-                <div class="door-back">„Lasst uns das Licht der Hoffnung weitergeben.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 15)">
-            <div class="door-inner">
-                <div class="door-front">15</div>
-                <div class="door-back">„Die besten Geschenke kommen ohne Schleife.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 16)">
-            <div class="door-inner">
-                <div class="door-front">16</div>
-                <div class="door-back">„Ein freundliches Wort ist wie ein Stern in der Nacht.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 17)">
-            <div class="door-inner">
-                <div class="door-front">17</div>
-                <div class="door-back">„Zusammen ist Weihnachten am schönsten.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 18)">
-            <div class="door-inner">
-                <div class="door-front">18</div>
-                <div class="door-back">„Tannengrün und Kerzenschein laden zum Träumen ein.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 19)">
-            <div class="door-inner">
-                <div class="door-front">19</div>
-                <div class="door-back">„Dankbarkeit macht die Seele reich“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 20)">
-            <div class="door-inner">
-                <div class="door-front">20</div>
-                <div class="door-back">„Die wahre Magie von Weihnachten liegt im Geben.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 21)">
-            <div class="door-inner">
-                <div class="door-front">21</div>
-                <div class="door-back">„Lasst uns leuchten wie die Sterne am Himmel.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 22)">
-            <div class="door-inner">
-                <div class="door-front">22</div>
-                <div class="door-back">„Heute ist der perfekte Tag für einen Spaziergang im Schnee.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 23)">
-            <div class="door-inner">
-                <div class="door-front">23</div>
-                <div class="door-back">„Die schönsten Momente sind die, die wir teilen.“</div>
-            </div>
-        </div>
-        <div class="door" onclick="openDoor(this, 24)">
-            <div class="door-inner">
-                <div class="door-front">24</div>
-                <div class="door-back">„Frohe Weihnachten! Möge der Tag voller Liebe und Frieden sein.“</div>
+                <div class="door-back">„Das größte Geschenk ist die Liebe, die wir teilen.“</div>
             </div>
         </div>
 
-        <!-- Weitere Türen -->
+        <!-- Weitere Türchen hier (13-24) -->
+
     </div>
-    <footer>
-        <p>Handgemacht mit ❤️ | <a href="https://www.youtube.com/@FlohGo">Dein FlohGo</a></p>
-    </footer>
-    <script>
-        const today = new Date().getDate();
 
-        function openDoor(door, doorNumber) {
-            if (doorNumber > today) {
-                alert("Dieses Türchen kannst du noch nicht öffnen!");
-                return;
+    <div class="events">
+        <div class="event">
+            <strong>Weihnachtsmarkt</strong><br>
+            Vom 1. bis 24. Dezember: Besuche den Weihnachtsmarkt in deiner Stadt und genieße die festliche Atmosphäre!
+        </div>
+        <div class="event">
+            <strong>Adventslieder Singen</strong><br>
+            Jeden Sonntag im Advent: Triff dich mit Freunden zum gemeinsamen Singen klassischer Adventslieder!
+        </div>
+    </div>
+
+    <footer>
+        <p>Erstellt von FlohGo – <a href="https://www.youtube.com/@FlohGo">YouTube</a></p>
+    </footer>
+
+    <script>
+        function openDoor(door, day) {
+            const currentDay = new Date().getDate();
+
+            // Türchen nur sichtbar machen, wenn es der richtige Tag ist
+            if (day <= currentDay) {
+                door.classList.toggle('open');
+            } else {
+                alert("Du kannst nur die Türchen öffnen, die dem heutigen Datum entsprechen.");
             }
-            if (door.classList.contains("open")) return; 
-            door.classList.add("open");
         }
+
+        // Zeige nur die Türchen bis zum aktuellen Datum an
+        window.onload = function() {
+            const currentDay = new Date().getDate();
+
+            for (let i = 1; i <= 24; i++) {
+                const door = document.getElementById(`door-${i}`);
+                if (i > currentDay) {
+                    door.style.display = 'none'; // Verstecke zukünftige Türchen
+                } else {
+                    door.style.display = 'block'; // Zeige vergangene Türchen
+                }
+            }
+        };
     </script>
 </body>
 </html>
