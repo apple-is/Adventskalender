@@ -206,7 +206,7 @@
         <div class="door" id="door-8" onclick="openDoor(this, 8)">
             <div class="door-inner">
                 <div class="door-front">8</div>
-                <div class="door-back">„Die besten Geschenke kommen oft ohne Verpackung.“</div>
+                <div class="door-back">„SCHNELl - Schreibe "FlohGo“ auf DISCORD an um deine 100 Robux zubekommen!</div>
             </div>
         </div>
         <div class="door" id="door-9" onclick="openDoor(this, 9)">
@@ -233,6 +233,91 @@
                 <div class="door-back">„Das größte Geschenk ist die Liebe, die wir teilen.“</div>
             </div>
         </div>
+        <div class="door" id="door-13" onclick="openDoor(this, 13)">
+            <div class="door-inner">
+                <div class="door-front">13</div>
+                <div class="door-back">„Freunde sind das wahre Geschenk an Weihnachten.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-14" onclick="openDoor(this, 14)">
+            <div class="door-inner">
+                <div class="door-front">14</div>
+                <div class="door-back">„Es gibt keinen besseren Zeitpunkt, um Liebe zu verschenken als zu Weihnachten.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-15" onclick="openDoor(this, 15)">
+            <div class="door-inner">
+                <div class="door-front">15</div>
+                <div class="door-back">„Der wahre Wert von Weihnachten liegt in der Wärme der Herzen.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-16" onclick="openDoor(this, 16)">
+            <div class="door-inner">
+                <div class="door-front">16</div>
+                <div class="door-back">„Weihnachten ist, wenn die Herzen der Menschen erleuchtet werden.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-17" onclick="openDoor(this, 17)">
+            <div class="door-inner">
+                <div class="door-front">17</div>
+                <div class="door-back">„Jeder Tag ist ein Fest, an dem wir zusammen sein können.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-18" onclick="openDoor(this, 18)">
+            <div class="door-inner">
+                <div class="door-front">18</div>
+                <div class="door-back">„Mit Liebe und Freude können wir die Welt ein kleines Stückchen besser machen.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-19" onclick="openDoor(this, 19)">
+            <div class="door-inner">
+                <div class="door-front">19</div>
+                <div class="door-back">„Die besten Dinge im Leben sind nicht Dinge, sondern Momente.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-20" onclick="openDoor(this, 20)">
+            <div class="door-inner">
+                <div class="door-front">20</div>
+                <div class="door-back">„Weihnachten ist das Fest der Liebe und des Miteinanders.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-21" onclick="openDoor(this, 21)">
+            <div class="door-inner">
+                <div class="door-front">21</div>
+                <div class="door-back">„Lass dich vom Weihnachtszauber verzaubern und genieße den Moment.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-22" onclick="openDoor(this, 22)">
+            <div class="door-inner">
+                <div class="door-front">22</div>
+                <div class="door-back">„Weihnachten ist die Zeit, in der wir uns mit denen verbinden, die uns wichtig sind.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-23" onclick="openDoor(this, 23)">
+            <div class="door-inner">
+                <div class="door-front">23</div>
+                <div class="door-back">„Der wahre Geist von Weihnachten ist Liebe und Dankbarkeit.“</div>
+            </div>
+        </div>
+        
+        <div class="door" id="door-24" onclick="openDoor(this, 24)">
+            <div class="door-inner">
+                <div class="door-front">24</div>
+                <div class="door-back">„Frohe Weihnachten! Möge der Zauber dieser Zeit uns alle berühren.“</div>
+            </div>
+        </div>
+        
+        
 
         <!-- Weitere Türchen hier (13-24) -->
 
@@ -240,12 +325,12 @@
 
     <div class="events">
         <div class="event">
-            <strong>Weihnachtsmarkt</strong><br>
-            Vom 1. bis 24. Dezember: Besuche den Weihnachtsmarkt in deiner Stadt und genieße die festliche Atmosphäre!
+            <strong>Verlosung</strong><br>
+            100 Robux Verlosung, öffnet dafür Tür 8.!
         </div>
         <div class="event">
-            <strong>Adventslieder Singen</strong><br>
-            Jeden Sonntag im Advent: Triff dich mit Freunden zum gemeinsamen Singen klassischer Adventslieder!
+            <strong>Nichts</strong><br>
+            ...
         </div>
     </div>
 
@@ -256,7 +341,7 @@
     <script>
         function openDoor(door, day) {
             const currentDay = new Date().getDate();
-
+    
             // Türchen nur sichtbar machen, wenn es der richtige Tag ist
             if (day <= currentDay) {
                 door.classList.toggle('open');
@@ -264,20 +349,20 @@
                 alert("Du kannst nur die Türchen öffnen, die dem heutigen Datum entsprechen.");
             }
         }
-
+    
         // Zeige nur die Türchen bis zum aktuellen Datum an
         window.onload = function() {
             const currentDay = new Date().getDate();
-
+    
             for (let i = 1; i <= 24; i++) {
                 const door = document.getElementById(`door-${i}`);
                 if (i > currentDay) {
-                    door.style.display = 'none'; // Verstecke zukünftige Türchen
-                } else {
-                    door.style.display = 'block'; // Zeige vergangene Türchen
+                    door.style.pointerEvents = 'none'; // Deaktiviert das Klicken auf zukünftige Türchen
+                    door.style.opacity = '0.5'; // Macht zukünftige Türchen halbtransparent
                 }
             }
         };
     </script>
+    
 </body>
 </html>
